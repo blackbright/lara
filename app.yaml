@@ -1,0 +1,6 @@
+kind: wasmer.io/App.v0
+name: lara
+owner: axelawarez
+package: .
+scaling:
+  mode: single_concurrency
