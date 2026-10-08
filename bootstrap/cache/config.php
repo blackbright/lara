@@ -1,4 +1,137 @@
 <?php return array (
+  'concurrency' => 
+  array (
+    'default' => 'process',
+  ),
+  'broadcasting' => 
+  array (
+    'default' => 'log',
+    'connections' => 
+    array (
+      'reverb' => 
+      array (
+        'driver' => 'reverb',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
+        'options' => 
+        array (
+          'host' => NULL,
+          'port' => 443,
+          'scheme' => 'https',
+          'useTLS' => true,
+        ),
+        'client_options' => 
+        array (
+        ),
+      ),
+      'pusher' => 
+      array (
+        'driver' => 'pusher',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
+        'options' => 
+        array (
+          'cluster' => NULL,
+          'host' => 'api-mt1.pusher.com',
+          'port' => 443,
+          'scheme' => 'https',
+          'encrypted' => true,
+          'useTLS' => true,
+        ),
+        'client_options' => 
+        array (
+        ),
+      ),
+      'ably' => 
+      array (
+        'driver' => 'ably',
+        'key' => NULL,
+      ),
+      'mercure' => 
+      array (
+        'driver' => 'mercure',
+        'url' => NULL,
+        'public_url' => NULL,
+        'secret' => NULL,
+        'encryption_key' => NULL,
+        'claims' => 
+        array (
+          'iss' => NULL,
+          'client_id' => 'Laravel',
+        ),
+        'cookie_name' => NULL,
+        'subscribe_expiration' => 5,
+      ),
+      'log' => 
+      array (
+        'driver' => 'log',
+      ),
+      'null' => 
+      array (
+        'driver' => 'null',
+      ),
+    ),
+  ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => '/app/resources/views',
+    ),
+    'compiled' => '/app/storage/framework/views',
+  ),
+  'cors' => 
+  array (
+    'paths' => 
+    array (
+      0 => 'api/*',
+      1 => 'sanctum/csrf-cookie',
+    ),
+    'allowed_methods' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins_patterns' => 
+    array (
+    ),
+    'allowed_headers' => 
+    array (
+      0 => '*',
+    ),
+    'exposed_headers' => 
+    array (
+    ),
+    'max_age' => 0,
+    'supports_credentials' => false,
+  ),
+  'hashing' => 
+  array (
+    'driver' => 'bcrypt',
+    'bcrypt' => 
+    array (
+      'rounds' => '12',
+      'verify' => true,
+      'limit' => NULL,
+    ),
+    'argon' => 
+    array (
+      'memory' => 65536,
+      'threads' => 1,
+      'time' => 4,
+      'verify' => true,
+    ),
+    'rehash_on_login' => true,
+  ),
+  'images' => 
+  array (
+    'default' => 'gd',
+  ),
   'app' => 
   array (
     'name' => 'Laravel',
@@ -28,24 +161,26 @@
       2 => 'Illuminate\\Bus\\BusServiceProvider',
       3 => 'Illuminate\\Cache\\CacheServiceProvider',
       4 => 'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider',
-      5 => 'Illuminate\\Cookie\\CookieServiceProvider',
-      6 => 'Illuminate\\Database\\DatabaseServiceProvider',
-      7 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
-      8 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
-      9 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
-      10 => 'Illuminate\\Hashing\\HashServiceProvider',
-      11 => 'Illuminate\\Mail\\MailServiceProvider',
-      12 => 'Illuminate\\Notifications\\NotificationServiceProvider',
-      13 => 'Illuminate\\Pagination\\PaginationServiceProvider',
-      14 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
-      15 => 'Illuminate\\Pipeline\\PipelineServiceProvider',
-      16 => 'Illuminate\\Queue\\QueueServiceProvider',
-      17 => 'Illuminate\\Redis\\RedisServiceProvider',
-      18 => 'Illuminate\\Session\\SessionServiceProvider',
-      19 => 'Illuminate\\Translation\\TranslationServiceProvider',
-      20 => 'Illuminate\\Validation\\ValidationServiceProvider',
-      21 => 'Illuminate\\View\\ViewServiceProvider',
-      22 => 'App\\Providers\\AppServiceProvider',
+      5 => 'Illuminate\\Concurrency\\ConcurrencyServiceProvider',
+      6 => 'Illuminate\\Cookie\\CookieServiceProvider',
+      7 => 'Illuminate\\Database\\DatabaseServiceProvider',
+      8 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
+      9 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
+      10 => 'Illuminate\\Image\\ImageServiceProvider',
+      11 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
+      12 => 'Illuminate\\Hashing\\HashServiceProvider',
+      13 => 'Illuminate\\Mail\\MailServiceProvider',
+      14 => 'Illuminate\\Notifications\\NotificationServiceProvider',
+      15 => 'Illuminate\\Pagination\\PaginationServiceProvider',
+      16 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
+      17 => 'Illuminate\\Pipeline\\PipelineServiceProvider',
+      18 => 'Illuminate\\Queue\\QueueServiceProvider',
+      19 => 'Illuminate\\Redis\\RedisServiceProvider',
+      20 => 'Illuminate\\Session\\SessionServiceProvider',
+      21 => 'Illuminate\\Translation\\TranslationServiceProvider',
+      22 => 'Illuminate\\Validation\\ValidationServiceProvider',
+      23 => 'Illuminate\\View\\ViewServiceProvider',
+      24 => 'App\\Providers\\AppServiceProvider',
     ),
     'aliases' => 
     array (
@@ -53,10 +188,12 @@
       'Arr' => 'Illuminate\\Support\\Arr',
       'Artisan' => 'Illuminate\\Support\\Facades\\Artisan',
       'Auth' => 'Illuminate\\Support\\Facades\\Auth',
+      'Benchmark' => 'Illuminate\\Support\\Benchmark',
       'Blade' => 'Illuminate\\Support\\Facades\\Blade',
       'Broadcast' => 'Illuminate\\Support\\Facades\\Broadcast',
       'Bus' => 'Illuminate\\Support\\Facades\\Bus',
       'Cache' => 'Illuminate\\Support\\Facades\\Cache',
+      'Concurrency' => 'Illuminate\\Support\\Facades\\Concurrency',
       'Config' => 'Illuminate\\Support\\Facades\\Config',
       'Context' => 'Illuminate\\Support\\Facades\\Context',
       'Cookie' => 'Illuminate\\Support\\Facades\\Cookie',
@@ -69,6 +206,7 @@
       'Gate' => 'Illuminate\\Support\\Facades\\Gate',
       'Hash' => 'Illuminate\\Support\\Facades\\Hash',
       'Http' => 'Illuminate\\Support\\Facades\\Http',
+      'Image' => 'Illuminate\\Support\\Facades\\Image',
       'Js' => 'Illuminate\\Support\\Js',
       'Lang' => 'Illuminate\\Support\\Facades\\Lang',
       'Log' => 'Illuminate\\Support\\Facades\\Log',
@@ -88,6 +226,7 @@
       'Session' => 'Illuminate\\Support\\Facades\\Session',
       'Storage' => 'Illuminate\\Support\\Facades\\Storage',
       'Str' => 'Illuminate\\Support\\Str',
+      'Uri' => 'Illuminate\\Support\\Uri',
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
@@ -139,6 +278,11 @@
         'driver' => 'array',
         'serialize' => false,
       ),
+      'session' => 
+      array (
+        'driver' => 'session',
+        'key' => '_cache',
+      ),
       'database' => 
       array (
         'driver' => 'database',
@@ -151,6 +295,12 @@
         'driver' => 'file',
         'path' => '/app/storage/framework/cache/data',
         'lock_path' => '/app/storage/framework/cache/data',
+      ),
+      'storage' => 
+      array (
+        'driver' => 'storage',
+        'disk' => NULL,
+        'path' => 'framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -183,8 +333,8 @@
       'dynamodb' => 
       array (
         'driver' => 'dynamodb',
-        'key' => '',
-        'secret' => '',
+        'key' => 'proxy-injected',
+        'secret' => 'proxy-injected',
         'region' => 'us-east-1',
         'table' => 'cache',
         'endpoint' => NULL,
@@ -192,6 +342,15 @@
       'octane' => 
       array (
         'driver' => 'octane',
+      ),
+      'failover' => 
+      array (
+        'driver' => 'failover',
+        'stores' => 
+        array (
+          0 => 'database',
+          1 => 'array',
+        ),
       ),
     ),
     'prefix' => '',
@@ -333,8 +492,8 @@
       's3' => 
       array (
         'driver' => 's3',
-        'key' => '',
-        'secret' => '',
+        'key' => 'proxy-injected',
+        'secret' => 'proxy-injected',
         'region' => 'us-east-1',
         'bucket' => '',
         'url' => NULL,
@@ -380,6 +539,14 @@
         'path' => '/app/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
+        'replace_placeholders' => true,
+      ),
+      'monthly' => 
+      array (
+        'driver' => 'monthly',
+        'path' => '/app/storage/logs/laravel.log',
+        'level' => 'debug',
+        'max_files' => 3,
         'replace_placeholders' => true,
       ),
       'slack' => 
@@ -520,6 +687,9 @@
       array (
         0 => '/app/resources/views/vendor/mail',
       ),
+      'extensions' => 
+      array (
+      ),
     ),
   ),
   'queue' => 
@@ -552,8 +722,8 @@
       'sqs' => 
       array (
         'driver' => 'sqs',
-        'key' => '',
-        'secret' => '',
+        'key' => 'proxy-injected',
+        'secret' => 'proxy-injected',
         'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
         'queue' => 'default',
         'suffix' => NULL,
@@ -568,6 +738,19 @@
         'retry_after' => 90,
         'block_for' => NULL,
         'after_commit' => false,
+      ),
+      'deferred' => 
+      array (
+        'driver' => 'deferred',
+      ),
+      'failover' => 
+      array (
+        'driver' => 'failover',
+        'connections' => 
+        array (
+          0 => 'database',
+          1 => 'deferred',
+        ),
       ),
     ),
     'batching' => 
@@ -588,10 +771,14 @@
     array (
       'token' => NULL,
     ),
+    'resend' => 
+    array (
+      'key' => NULL,
+    ),
     'ses' => 
     array (
-      'key' => '',
-      'secret' => '',
+      'key' => 'proxy-injected',
+      'secret' => 'proxy-injected',
       'region' => 'us-east-1',
     ),
     'slack' => 
@@ -626,227 +813,6 @@
     'same_site' => 'lax',
     'partitioned' => false,
   ),
-  'hashing' => 
-  array (
-    'driver' => 'bcrypt',
-    'bcrypt' => 
-    array (
-      'rounds' => '12',
-      'verify' => true,
-    ),
-    'argon' => 
-    array (
-      'memory' => 65536,
-      'threads' => 1,
-      'time' => 4,
-      'verify' => true,
-    ),
-    'rehash_on_login' => true,
-  ),
-  'broadcasting' => 
-  array (
-    'default' => 'log',
-    'connections' => 
-    array (
-      'reverb' => 
-      array (
-        'driver' => 'reverb',
-        'key' => NULL,
-        'secret' => NULL,
-        'app_id' => NULL,
-        'options' => 
-        array (
-          'host' => NULL,
-          'port' => 443,
-          'scheme' => 'https',
-          'useTLS' => true,
-        ),
-        'client_options' => 
-        array (
-        ),
-      ),
-      'pusher' => 
-      array (
-        'driver' => 'pusher',
-        'key' => NULL,
-        'secret' => NULL,
-        'app_id' => NULL,
-        'options' => 
-        array (
-          'cluster' => NULL,
-          'host' => 'api-mt1.pusher.com',
-          'port' => 443,
-          'scheme' => 'https',
-          'encrypted' => true,
-          'useTLS' => true,
-        ),
-        'client_options' => 
-        array (
-        ),
-      ),
-      'ably' => 
-      array (
-        'driver' => 'ably',
-        'key' => NULL,
-      ),
-      'log' => 
-      array (
-        'driver' => 'log',
-      ),
-      'null' => 
-      array (
-        'driver' => 'null',
-      ),
-    ),
-  ),
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => '/app/resources/views',
-    ),
-    'compiled' => '/app/storage/framework/views',
-  ),
-  'cors' => 
-  array (
-    'paths' => 
-    array (
-      0 => 'api/*',
-      1 => 'sanctum/csrf-cookie',
-    ),
-    'allowed_methods' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins_patterns' => 
-    array (
-    ),
-    'allowed_headers' => 
-    array (
-      0 => '*',
-    ),
-    'exposed_headers' => 
-    array (
-    ),
-    'max_age' => 0,
-    'supports_credentials' => false,
-  ),
-  'flare' => 
-  array (
-    'key' => NULL,
-    'flare_middleware' => 
-    array (
-      0 => 'Spatie\\FlareClient\\FlareMiddleware\\RemoveRequestIp',
-      1 => 'Spatie\\FlareClient\\FlareMiddleware\\AddGitInformation',
-      2 => 'Spatie\\LaravelIgnition\\FlareMiddleware\\AddNotifierName',
-      3 => 'Spatie\\LaravelIgnition\\FlareMiddleware\\AddEnvironmentInformation',
-      4 => 'Spatie\\LaravelIgnition\\FlareMiddleware\\AddExceptionInformation',
-      5 => 'Spatie\\LaravelIgnition\\FlareMiddleware\\AddDumps',
-      'Spatie\\LaravelIgnition\\FlareMiddleware\\AddLogs' => 
-      array (
-        'maximum_number_of_collected_logs' => 200,
-      ),
-      'Spatie\\LaravelIgnition\\FlareMiddleware\\AddQueries' => 
-      array (
-        'maximum_number_of_collected_queries' => 200,
-        'report_query_bindings' => true,
-      ),
-      'Spatie\\LaravelIgnition\\FlareMiddleware\\AddJobs' => 
-      array (
-        'max_chained_job_reporting_depth' => 5,
-      ),
-      6 => 'Spatie\\LaravelIgnition\\FlareMiddleware\\AddContext',
-      7 => 'Spatie\\LaravelIgnition\\FlareMiddleware\\AddExceptionHandledStatus',
-      'Spatie\\FlareClient\\FlareMiddleware\\CensorRequestBodyFields' => 
-      array (
-        'censor_fields' => 
-        array (
-          0 => 'password',
-          1 => 'password_confirmation',
-        ),
-      ),
-      'Spatie\\FlareClient\\FlareMiddleware\\CensorRequestHeaders' => 
-      array (
-        'headers' => 
-        array (
-          0 => 'API-KEY',
-          1 => 'Authorization',
-          2 => 'Cookie',
-          3 => 'Set-Cookie',
-          4 => 'X-CSRF-TOKEN',
-          5 => 'X-XSRF-TOKEN',
-        ),
-      ),
-    ),
-    'send_logs_as_events' => true,
-  ),
-  'ignition' => 
-  array (
-    'editor' => 'phpstorm',
-    'theme' => 'auto',
-    'enable_share_button' => true,
-    'register_commands' => false,
-    'solution_providers' => 
-    array (
-      0 => 'Spatie\\Ignition\\Solutions\\SolutionProviders\\BadMethodCallSolutionProvider',
-      1 => 'Spatie\\Ignition\\Solutions\\SolutionProviders\\MergeConflictSolutionProvider',
-      2 => 'Spatie\\Ignition\\Solutions\\SolutionProviders\\UndefinedPropertySolutionProvider',
-      3 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\IncorrectValetDbCredentialsSolutionProvider',
-      4 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingAppKeySolutionProvider',
-      5 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\DefaultDbNameSolutionProvider',
-      6 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\TableNotFoundSolutionProvider',
-      7 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingImportSolutionProvider',
-      8 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\InvalidRouteActionSolutionProvider',
-      9 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\ViewNotFoundSolutionProvider',
-      10 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\RunningLaravelDuskInProductionProvider',
-      11 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingColumnSolutionProvider',
-      12 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\UnknownValidationSolutionProvider',
-      13 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingMixManifestSolutionProvider',
-      14 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingViteManifestSolutionProvider',
-      15 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\MissingLivewireComponentSolutionProvider',
-      16 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\UndefinedViewVariableSolutionProvider',
-      17 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\GenericLaravelExceptionSolutionProvider',
-      18 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\OpenAiSolutionProvider',
-      19 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\SailNetworkSolutionProvider',
-      20 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\UnknownMysql8CollationSolutionProvider',
-      21 => 'Spatie\\LaravelIgnition\\Solutions\\SolutionProviders\\UnknownMariadbCollationSolutionProvider',
-    ),
-    'ignored_solution_providers' => 
-    array (
-    ),
-    'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => '/app',
-    'local_sites_path' => '',
-    'housekeeping_endpoint_prefix' => '_ignition',
-    'settings_file_path' => '',
-    'recorders' => 
-    array (
-      0 => 'Spatie\\LaravelIgnition\\Recorders\\DumpRecorder\\DumpRecorder',
-      1 => 'Spatie\\LaravelIgnition\\Recorders\\JobRecorder\\JobRecorder',
-      2 => 'Spatie\\LaravelIgnition\\Recorders\\LogRecorder\\LogRecorder',
-      3 => 'Spatie\\LaravelIgnition\\Recorders\\QueryRecorder\\QueryRecorder',
-    ),
-    'open_ai_key' => NULL,
-    'with_stack_frame_arguments' => true,
-    'argument_reducers' => 
-    array (
-      0 => 'Spatie\\Backtrace\\Arguments\\Reducers\\BaseTypeArgumentReducer',
-      1 => 'Spatie\\Backtrace\\Arguments\\Reducers\\ArrayArgumentReducer',
-      2 => 'Spatie\\Backtrace\\Arguments\\Reducers\\StdClassArgumentReducer',
-      3 => 'Spatie\\Backtrace\\Arguments\\Reducers\\EnumArgumentReducer',
-      4 => 'Spatie\\Backtrace\\Arguments\\Reducers\\ClosureArgumentReducer',
-      5 => 'Spatie\\Backtrace\\Arguments\\Reducers\\DateTimeArgumentReducer',
-      6 => 'Spatie\\Backtrace\\Arguments\\Reducers\\DateTimeZoneArgumentReducer',
-      7 => 'Spatie\\Backtrace\\Arguments\\Reducers\\SymphonyRequestArgumentReducer',
-      8 => 'Spatie\\LaravelIgnition\\ArgumentReducers\\ModelArgumentReducer',
-      9 => 'Spatie\\LaravelIgnition\\ArgumentReducers\\CollectionArgumentReducer',
-      10 => 'Spatie\\Backtrace\\Arguments\\Reducers\\StringableArgumentReducer',
-    ),
-  ),
   'tinker' => 
   array (
     'commands' => 
@@ -859,5 +825,6 @@
     array (
       0 => 'App\\Nova',
     ),
+    'trust_project' => 'always',
   ),
 );
